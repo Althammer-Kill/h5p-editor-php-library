@@ -15,6 +15,8 @@ H5PEditor.language.core = {
   outOfStep: 'The :property value can only be changed in steps of :step.',
   add: 'Add',
   addFile: 'Add file',
+  addFromGallery: 'From gallery',
+  addImageFromGallery: 'Add image from gallery',
   removeFile: 'Remove file',
   confirmRemoval: 'Are you sure you wish to remove this :type?',
   removeImage: 'Remove image',

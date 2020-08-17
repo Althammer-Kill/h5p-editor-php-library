@@ -232,7 +232,7 @@ ns.File.prototype.addFile = function () {
       html += ' aria-describedby="' + ns.getDescriptionId(this.id) + '"';
     }
     html += ' title="' + ns.t('core', 'addFile') + '">' +
-      '<div class="h5peditor-field-file-upload-text">' + ns.t('core', 'add') + '</div>' +
+      '<div class="h5peditor-field-file-upload-text"><span>' + ns.t('core', 'add') + '</span></div>' +
     '</a>'
 
     this.$file.html(html).children('.add').click(function () {
