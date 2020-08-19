@@ -17,6 +17,7 @@ H5PEditor.language.core = {
   addFile: 'Add file',
   addFromGallery: 'From gallery',
   addImageFromGallery: 'Add image from gallery',
+  galleryQueryPlaceholder: 'Type keywords here',
   removeFile: 'Remove file',
   confirmRemoval: 'Are you sure you wish to remove this :type?',
   removeImage: 'Remove image',

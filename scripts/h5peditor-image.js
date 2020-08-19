@@ -52,6 +52,7 @@ ns.widgets.image = function (parent, field, params, setValue) {
 	self.on('upload', function () {
 		// Hide edit image button
 		self.$editImage.addClass('hidden');
+		self.$gallerySearch.addClass('hidden');
 	});
 
 	// When a new file has been uploaded
@@ -91,8 +92,15 @@ ns.widgets.image.prototype.appendTo = function ($wrapper) {
 		htmlString += '<button class="h5peditor-button-textual h5p-copyright-button">' + ns.t('core', 'editCopyright') + '</button>';
 	}
 
-	htmlString += '</div>' +
-		'<div class="h5p-editor-dialog">' +
+	htmlString += '</div>';
+
+	htmlString += '<div class="h5p-editor-gallery-search hidden">' +
+		'<input class="h5peditor-text search-query" type="text" maxlength="255" placeholder="' + ns.t('core', 'galleryQueryPlaceholder') + '"></input>' +
+		'<div class="thumbnails hidden">thumbnails</div>' +
+		'<div class="h5peditor-field-description attribution">Photos by <a href="https://unsplash.com" target="_blank">Unsplash</a></div>' +
+		'</div>';
+
+	htmlString += '<div class="h5p-editor-dialog">' +
 		'<a href="#" class="h5p-close" title="' + ns.t('core', 'close') + '"></a>' +
 		'</div>';
 
@@ -103,6 +111,9 @@ ns.widgets.image.prototype.appendTo = function ($wrapper) {
 	this.$editImage = $container.find('.h5p-editing-image-button');
 	this.$copyrightButton = $container.find('.h5p-copyright-button');
 	this.$file = $container.find('.file');
+	this.$gallerySearch = $container.find(".h5p-editor-gallery-search");
+	this.$gallerySearchQuery = this.$gallerySearch.find(".search-query");
+	this.$galleryThumbnails = this.$gallerySearch.find(".thumbnails");
 	this.$errors = $container.find('.h5p-errors');
 	this.addFile();
 
@@ -110,6 +121,130 @@ ns.widgets.image.prototype.appendTo = function ($wrapper) {
 	$container.find('.h5p-copyright-button').add($dialog.find('.h5p-close')).click(function () {
 		$dialog.toggleClass('h5p-open');
 		return false;
+	});
+
+	function onThumbnailClick(id) {
+		var formData = new FormData();
+		formData.append('id', id);
+		formData.append('contentId', H5PEditor.contentId || 0);
+
+		// Submit the form
+		var request = new XMLHttpRequest();
+		request.onload = function () {
+			var result;
+			var uploadComplete = {
+				error: null,
+				data: null
+			};
+
+			try {
+				result = JSON.parse(request.responseText);
+			}
+			catch (err) {
+				H5P.error(err);
+				// Add error data to event object
+				uploadComplete.error = H5PEditor.t('core', 'fileToLarge');
+			}
+
+			if (result !== undefined) {
+				if (result.error !== undefined) {
+					uploadComplete.error = result.error;
+				}
+				if (result.success === false) {
+					uploadComplete.error = (result.message ? result.message : H5PEditor.t('core', 'unknownFileUploadError'));
+				}
+			}
+
+			if (uploadComplete.error === null) {
+				// No problems, add response data to event object
+				uploadComplete.data = result;
+			}
+
+			// Allow the widget to process the result
+			self.trigger('uploadComplete', uploadComplete);
+		};
+
+		request.open('POST', H5PEditor.getAjaxUrl('gallery-upload'), true);
+		request.send(formData);
+		self.trigger('upload');
+	}
+
+	function onGallerySearchResult(query, page, result) {
+		self.$galleryThumbnails.empty();
+
+		if (result.images && result.images.length > 0) {
+			self.$galleryThumbnails.removeClass("hidden");
+
+			if (page > 1) {
+				var prevPage = ns.$('<span class="page-button">&laquo;</span>')
+				prevPage.click(function () {
+					gallerySearch(query, page - 1);
+				});
+				prevPage.appendTo(self.$galleryThumbnails);
+			}
+
+			for (var i in result.images) {
+				var image = result.images[i];
+				var thumbContainer = ns.$('<div class="thumbnail-container"><img /><a class="thumbnail-text" target="_blank"><span>profile</span></a></div>');
+				var img = thumbContainer.find("img");
+				var link = thumbContainer.find(".thumbnail-text");
+				var text = link.find("span");
+
+				text.text(image.author);
+				link.attr("href", image.profile);
+
+				img.attr('src', image.thumbnail);
+				img.click(function (id) {
+					return function () {
+						onThumbnailClick(id);
+					};
+				}(image.id));
+
+				thumbContainer.appendTo(self.$galleryThumbnails);
+			}
+
+			if (page < result.totalPages - 1) {
+				var nextPage = ns.$('<span class="page-button">&raquo;</span>')
+				nextPage.click(function () {
+					gallerySearch(query, page + 1);
+				});
+				nextPage.appendTo(self.$galleryThumbnails);
+			}
+
+		} else {
+			self.$galleryThumbnails.addClass("hidden");
+		}
+	}
+
+	function gallerySearch(query, page) {
+		var formData = new FormData();
+		formData.append('query', query);
+		formData.append('page', page);
+
+		var request = new XMLHttpRequest();
+		request.open('POST', H5PEditor.getAjaxUrl('gallery'), true);
+		request.onload = function (e) {
+			var result = {};
+			try {
+				result = JSON.parse(request.responseText);
+				onGallerySearchResult(query, page, result);
+			}
+			catch (err) {
+				H5P.error(err);
+			}
+		};
+		request.send(formData);
+	}
+
+	var galleryTimeout = null;
+
+	this.$gallerySearchQuery.on("input", function (e) {
+		if (galleryTimeout === null) {
+			galleryTimeout = setTimeout(function () {
+				galleryTimeout = null;
+				gallerySearch(self.$gallerySearchQuery.val(), 1);
+			}, 1000);
+		}
 	});
 
 	var editImagePopup = self.editImagePopup = new H5PEditor.ImageEditingPopup(this.field.ratio);
@@ -208,13 +343,14 @@ ns.widgets.image.prototype.addFile = function () {
 			.html(html)
 			.children('.add')
 			.click(function () {
+				that.$gallerySearch.addClass('hidden');
 				that.isOriginalImage = true;
 				that.openFileSelector();
 				return false;
 			});
 
 		this.$file.children('.from-gallery').click(function () {
-			alert("works");
+			that.$gallerySearch.removeClass('hidden');
 		});
 
 		// Remove edit image button

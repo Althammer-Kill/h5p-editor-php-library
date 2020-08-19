@@ -602,7 +602,8 @@ a {
 				vertical-align: middle;
 			}
 
-			.h5peditor-field-file-upload-text:before, .h5peditor-field-file-gallery-text:before {
+			.h5peditor-field-file-upload-text:before,
+			.h5peditor-field-file-gallery-text:before {
 				font-family: $icon-font-family;
 				line-height: 1;
 				color: #39c943;
@@ -780,6 +781,82 @@ a {
 	.field.video > .h5p-copyright-button,
 	.field.audio > .h5p-copyright-button {
 		float: left;
+	}
+
+	.h5p-editor-gallery-search {
+		margin-top: 3em;
+
+		&.hidden {
+			display: none;
+		}
+
+		.search-query {
+			border-radius: 2px 2px 0 0;
+		}
+
+		.thumbnails {
+			border: 1px solid $form-border-color;
+			border-top: none;
+			overflow-x: scroll;
+			overflow-y: hidden;
+			white-space: nowrap;
+			padding: 5px 5px 5px 0;
+
+			&.hidden {
+				display: none;
+			}
+
+			.thumbnail-container {
+				display: inline-block;
+				position: relative;
+				margin: 0 0 0 5px;
+				background-color: #ddd;
+				font-size: 0;
+
+				img {
+					cursor: pointer;
+					height: 150px;
+					border-radius: 5px;
+				}
+
+				.thumbnail-text {
+					display: none;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					color: white;
+					border-radius: 0 0 5px 5px;
+					font-size: 14px;
+
+					span {
+						margin: 0 0.3em;
+						line-height: 2em;
+					}
+				}
+
+				&:hover .thumbnail-text {
+					display: inline-block;
+					background: rgba(0, 0, 0, 0.5);
+				}
+			}
+
+			.page-button {
+				display: inline-block;
+				cursor: pointer;
+				background-color: #ddd;
+				border-radius: 5px;
+				margin: 0 0 0 5px;
+				line-height: 150px;
+				font-weight: bold;
+				vertical-align: top;
+				padding: 0 1em;
+
+				&:hover {
+					background-color: #ccc;
+				}
+			}
+		}
 	}
 
 	.h5p-editor-dialog {
