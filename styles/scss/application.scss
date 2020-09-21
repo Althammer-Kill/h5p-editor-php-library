@@ -34,10 +34,12 @@ a {
 		font-size: 0.875em;
 		margin-top: 0.4em;
 	}
+
 	.h5peditor-single > .field.library {
 		border: 0;
 		padding: 0;
 	}
+
 	.cke_dialog_background_cover {
 		width: 100% !important;
 		height: 100% !important;
@@ -48,6 +50,7 @@ a {
 		color: #da0001;
 		white-space: normal;
 	}
+
 	textarea {
 		resize: vertical;
 	}
@@ -66,6 +69,7 @@ a {
 		.h5peditor-field-description {
 			display: none;
 		}
+
 		.h5peditor-label-wrapper {
 			float: left;
 		}
@@ -75,9 +79,11 @@ a {
 		.h5peditor-field-important-description {
 			display: block;
 		}
+
 		.h5peditor-label-wrapper {
 			float: none;
 		}
+
 		.important-description-show {
 			display: none;
 		}
@@ -101,6 +107,7 @@ a {
 			border-color: red;
 		}
 	}
+
 	.h5peditor-text,
 	textarea {
 		width: 100%;
@@ -116,18 +123,22 @@ a {
 	input:focus::-webkit-input-placeholder {
 		color: $form-input-focus-placeholder-color;
 	}
+
 	textarea:focus:-moz-placeholder,
 	input:focus:-moz-placeholder {
 		color: $form-input-focus-placeholder-color;
 	}
+
 	textarea:focus::-moz-placeholder,
 	input:focus::-moz-placeholder {
 		color: $form-input-focus-placeholder-color;
 	}
+
 	textarea:focus:-ms-input-placeholder,
 	input:focus:-ms-input-placeholder {
 		color: $form-input-focus-placeholder-color;
 	}
+
 	textarea:focus.h5peditor-ckeditor-placeholder,
 	input:focus.h5peditor-ckeditor-placeholder {
 		color: $form-input-focus-placeholder-color;
@@ -136,18 +147,23 @@ a {
 	::-webkit-input-placeholder {
 		color: $form-input-placeholder-color;
 	}
+
 	:-moz-placeholder {
 		color: $form-input-placeholder-color;
 	}
+
 	::-moz-placeholder {
 		color: $form-input-placeholder-color;
 	}
+
 	:-ms-input-placeholder {
 		color: $form-input-placeholder-color;
 	}
+
 	.h5peditor-ckeditor-placeholder {
 		color: $form-input-placeholder-color;
 	}
+
 	& > select,
 	.h5peditor-language-switcher select,
 	h5peditor-select,
@@ -166,22 +182,27 @@ a {
 			background-color: #efefef;
 		}
 	}
+
 	& > select {
 		margin-bottom: 13px;
 		margin-right: 20px;
 	}
+
 	select::-ms-expand {
 		display: none;
 	}
+
 	a:focus {
 		outline: none;
 	}
+
 	textarea:focus,
 	.h5peditor-text:focus {
 		outline: none;
 		background-color: $white;
 		border-color: #53a0ff;
 	}
+
 	.h5p-ul {
 		padding: 0;
 		margin: 0;
@@ -211,19 +232,23 @@ a {
 			}
 		}
 	}
+
 	.dimensions input,
 	.coordinates input,
 	.number input {
 		width: 75px;
 	}
+
 	.number input[type="range"] {
 		width: 300px;
 		float: left;
 		margin: 7px 8px 0 0;
 	}
+
 	.h5p-errors {
 		clear: both;
 	}
+
 	.h5p-add-file {
 		float: left;
 		position: relative;
@@ -258,6 +283,7 @@ a {
 		height: 100%;
 		text-align: center;
 	}
+
 	.h5p-add-dialog {
 		position: absolute;
 		z-index: 1;
@@ -301,6 +327,7 @@ a {
 				&:first-child {
 					border-left: 1px solid #ccc;
 				}
+
 				&.selected {
 					color: #333;
 					background: #fff;
@@ -316,6 +343,7 @@ a {
 				h3 {
 					margin: 0 0 1em 0;
 				}
+
 				.h5p-file-drop-upload {
 					width: 90px;
 					margin: 0;
@@ -449,6 +477,7 @@ a {
 			text-align: right;
 		}
 	}
+
 	.h5p-or {
 		border-bottom: 1px solid #cdcdcd;
 		padding: 0;
@@ -456,6 +485,7 @@ a {
 		text-align: center;
 		height: 0.5em;
 		line-height: 1em;
+
 		& > span {
 			background: #fff;
 			padding: 0 0.5em;
@@ -478,6 +508,7 @@ a {
 			background: #ccc;
 			z-index: 1;
 		}
+
 		.h5p-or-vertical-word-wrapper {
 			text-align: center;
 			height: 18px;
@@ -501,6 +532,7 @@ a {
 	.h5p-file-url {
 		text-align: center;
 	}
+
 	.h5p-thumbnail {
 		margin: 0.5em;
 		width: 6em;
@@ -527,10 +559,12 @@ a {
 			padding: 0.065em;
 			@include opacity(0.6);
 		}
+
 		.h5p-remove:hover,
 		.h5p-remove:focus {
 			@include opacity(1);
 		}
+
 		.h5p-remove:after {
 			font-family: $icon-font-family;
 			font-size: 2em;
@@ -539,6 +573,7 @@ a {
 			@include opacity(0.6);
 		}
 	}
+
 	.h5p-type {
 		position: absolute;
 		width: 100%;
@@ -551,6 +586,7 @@ a {
 		color: #fff;
 		cursor: pointer;
 	}
+
 	.file {
 		position: relative;
 		float: left;
@@ -564,6 +600,7 @@ a {
 		&.field {
 			float: none;
 		}
+
 		.thumbnail {
 			display: inline-block;
 			margin: 10px 10px 10px 0;
@@ -575,9 +612,11 @@ a {
 			min-height: 1em;
 			background: $form-input-color inline-image("transparent-background.png") repeat;
 		}
+
 		.thumbnail:focus {
 			@include box-shadow(0 0 10px 0 #222);
 		}
+
 		.add,
 		.from-gallery {
 			display: inline-block;
@@ -610,13 +649,16 @@ a {
 				font-size: 2em;
 				vertical-align: middle;
 			}
+
 			.h5peditor-field-file-upload-text:before {
 				content: "\e902";
 			}
+
 			.h5peditor-field-file-gallery-text:before {
 				content: "\e88a";
 			}
 		}
+
 		.remove {
 			display: block;
 			position: absolute;
@@ -624,9 +666,11 @@ a {
 			right: 7px;
 			cursor: pointer;
 		}
+
 		.remove:focus:before {
 			@include opacity(1);
 		}
+
 		.remove:before {
 			font-family: $icon-font-family;
 			font-size: 1.4em;
@@ -635,14 +679,17 @@ a {
 			@include opacity(0.6);
 			@include text-shadow(rgba(black, 0.4) 0 0 4px, rgba(black, 0.4) 0 0 4px, rgba(black, 0.4) 0 0 4px);
 		}
+
 		.remove:hover {
 			text-decoration: none;
 		}
+
 		.remove:hover:before {
 			color: #fff;
 			@include opacity(1);
 			@include text-shadow(rgba(black, 0.4) 0 0 4px, rgba(black, 0.4) 0 0 4px, rgba(black, 0.4) 0 0 4px);
 		}
+
 		img {
 			max-width: 100%;
 			vertical-align: bottom;
@@ -674,6 +721,7 @@ a {
 			float: left;
 		}
 	}
+
 	.video .file,
 	.audio .file {
 		position: static;
@@ -683,29 +731,35 @@ a {
 		.add {
 			float: left;
 		}
+
 		.add {
 			margin-top: 8px;
 		}
+
 		.thumbnail {
 			overflow: visible;
 			position: relative;
 			cursor: auto;
 		}
+
 		.remove {
 			top: -3px;
 			right: -5px;
 		}
+
 		.type {
 			padding: 16px 8px 4px;
 			background: #000;
 			color: #fff;
 			font-size: 10px;
 		}
+
 		.h5peditor-uploading {
 			float: left;
 			margin: 0.5em;
 		}
 	}
+
 	.libwrap {
 		margin-top: $padding;
 
@@ -714,10 +768,12 @@ a {
 			margin-top: 0;
 		}
 	}
+
 	input[type="checkbox"] {
 		margin: 4px 4px 4px 0;
 		vertical-align: bottom;
 	}
+
 	.moving {
 		position: absolute;
 		z-index: 1;
@@ -737,6 +793,7 @@ a {
 		padding-bottom: 6px;
 		font-size: 14px;
 	}
+
 	.h5peditor-loading {
 		padding: 0.875em 0 1em 3.25em;
 		font-style: italic;
@@ -775,7 +832,6 @@ a {
 	.h5p-copyright-button:focus {
 		box-shadow: 0 0 16px 0 rgba(133, 188, 255, 0.84);
 	}
-
 	/* Copyright button for video & audio */
 	.field.file > .h5p-copyright-button,
 	.field.video > .h5p-copyright-button,
@@ -819,25 +875,35 @@ a {
 					border-radius: 5px;
 				}
 
-				.thumbnail-text {
+				.thumbnail-overlay {
 					display: none;
 					position: absolute;
 					bottom: 0;
 					left: 0;
-					width: 100%;
+					right: 0;
 					color: white;
 					border-radius: 0 0 5px 5px;
-					font-size: 14px;
-
-					span {
-						margin: 0 0.3em;
-						line-height: 2em;
-					}
+					font-size: 13px;
 				}
 
-				&:hover .thumbnail-text {
-					display: inline-block;
+				&:hover .thumbnail-overlay {
+					display: block;
 					background: rgba(0, 0, 0, 0.5);
+				}
+
+				.thumbnail-text {
+					line-height: 2em;
+					margin: 0 0.3em;
+					white-space: pre-wrap;
+
+					a {
+						color: #ddd;
+					}
+
+					a:hover {
+						text-decoration: underline;
+						color: #ddd;
+					}
 				}
 			}
 

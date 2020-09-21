@@ -185,13 +185,13 @@ ns.widgets.image.prototype.appendTo = function ($wrapper) {
 
 			for (var i in result.images) {
 				var image = result.images[i];
-				var thumbContainer = ns.$('<div class="thumbnail-container"><img /><a class="thumbnail-text" target="_blank"><span>profile</span></a></div>');
+				var thumbContainer = ns.$('<div class="thumbnail-container"><img /><div class="thumbnail-overlay"><div class="thumbnail-text"><a target="_blank">profile</a> on <a target="_blank" href="https://unsplash.com">Unsplash</a></div></div></div>');
 				var img = thumbContainer.find("img");
 				var link = thumbContainer.find(".thumbnail-text");
-				var text = link.find("span");
+				var authorLink = link.find("a").first();
 
-				text.text(image.author);
-				link.attr("href", image.profile);
+				authorLink.text(image.author);
+				authorLink.attr("href", image.profile);
 
 				img.attr('src', image.thumbnail);
 				img.click(function (id) {
@@ -204,7 +204,7 @@ ns.widgets.image.prototype.appendTo = function ($wrapper) {
 			}
 
 			if (page < result.totalPages - 1) {
-				var nextPage = ns.$('<span class="page-button">&raquo;</span>')
+				var nextPage = ns.$('<span class="page-button">&raquo;</span>');
 				nextPage.click(function () {
 					gallerySearch(query, page + 1);
 				});
