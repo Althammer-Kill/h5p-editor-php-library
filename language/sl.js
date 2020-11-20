@@ -49,12 +49,12 @@ H5PEditor.language.core = {
   selectFiletoUpload: 'Izberite datoteko za prenos',
   or: 'ali',
   enterAudioUrl: 'Vpis spletnega naslova (URL)',
-  enterVideoUrl: 'Vpis spletnega naslova (URL)',
+  enterVideoUrl: 'Enter video URL',
   enterAudioTitle: 'Dodaj spletni naslov (URL) do zvočnega posnetka',
   enterVideoTitle: 'Dodaj spletni naslov (URL) do YouTube ali drugega videoposnetka',
   uploadAudioTitle: 'Naloži zvočni posnetek',
   uploadVideoTitle: 'Naloži videoposnetek',
-  addVideoDescription: 'H5P podpira vse zunanje videoposnetke v formatu mp4, webm ali ogv. Tudi povezave do posnetkov na Vimeo Pro in YouTube.',
+  addVideoDescription: 'H5P supports all external video sources formatted as mp4, webm or ogv, like Vimeo Pro, and has support for YouTube and Panopto links.',
   insert: 'Vstavi',
   cancel: 'Prekliči',
   height: 'višina',
@@ -215,5 +215,6 @@ H5PEditor.language.core = {
   unknownLibrary: 'Na žalost izbran tip vsebine \'%lib\' ni nameščen na tem spletnem mestu',
   proceedButtonLabel: 'Shrani',
   enterFullscreenButtonLabel: 'Vklopi celozaslonski način',
-  exitFullscreenButtonLabel: 'Izklopi celozaslonski način'
+  exitFullscreenButtonLabel: 'Izklopi celozaslonski način',
+  reuseSuccess: ':title was successfully imported from the H5P Hub.',
 };
